@@ -5671,3 +5671,571 @@ Processing by ArticlesController#index as HTML
   [1m[36mArticle Load (0.1ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
   Rendered articles/index.html.erb within layouts/application (1.5ms)
 Completed 200 OK in 44ms (Views: 43.6ms | ActiveRecord: 0.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddPaperclipFieldsToArticle (20150309204147)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "articles" ADD "image_file_name" varchar[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "articles" ADD "image_content_type" varchar
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "articles" ADD "image_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "articles" ADD "image_updated_at" datetime
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150309204147"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_article_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_article_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_taggings_on_article_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_taggings_on_article_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_taggings_on_tag_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_taggings_on_tag_id' AND type='index'
+
+
+
+Started GET "/articles" for ::1 at 2015-03-09 15:46:04 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.2ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 108ms (Views: 92.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/articles-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/screen-01fbf64475ac54fed4c01efd75d9ff54.css?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/application-522287195f88c13ae24f4d7b969752cf.css?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/tags-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/articles-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/tags-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-09 15:46:05 -0500
+
+
+Started GET "/articles/1" for ::1 at 2015-03-09 15:46:06 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/_comment.html.erb (6.5ms)
+  Rendered comments/_form.html.erb (14.7ms)
+  Rendered articles/show.html.erb within layouts/application (60.9ms)
+Completed 200 OK in 134ms (Views: 117.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/articles/1/edit" for ::1 at 2015-03-09 15:46:07 -0500
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/_form.html.erb (6.2ms)
+  Rendered articles/edit.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 50ms (Views: 49.3ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/articles/1" for ::1 at 2015-03-09 15:47:11 -0500
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3PD8t43sHPNPpt0krgSylr3Iq1cYgMLavkvC0qeIVhOHMEPKav++be/D5YOZp6gHKxWMd64tA4wnvJeXog1MHg==", "article"=>{"title"=>"Sample Article Title", "tag_list"=>"tag1", "body"=>"This is the text for my article, woo hoo!", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fc2eab492b8 @tempfile=#<Tempfile:/var/folders/57/sd6n25cn3mn9m25dhtf9y38h0000gn/T/RackMultipart20150309-6742-15itu51.jpg>, @original_filename="Florida Warm Up 2015.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"Florida Warm Up 2015.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT 1[0m  [["name", "tag1"]]
+  [1m[35mTag Load (0.0ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+Command :: file -b --mime '/var/folders/57/sd6n25cn3mn9m25dhtf9y38h0000gn/T/04cba4d20a643a3ea677d9af5852e09e20150309-6742-16ucs34.jpg'
+Command :: file -b --mime '/var/folders/57/sd6n25cn3mn9m25dhtf9y38h0000gn/T/04cba4d20a643a3ea677d9af5852e09e20150309-6742-qienqf.jpg'
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "articles" SET "image_file_name" = ?, "image_content_type" = ?, "image_file_size" = ?, "image_updated_at" = ?, "updated_at" = ? WHERE "articles"."id" = ?[0m  [["image_file_name", "Florida_Warm_Up_2015.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 455172], ["image_updated_at", "2015-03-09 20:47:11.223047"], ["updated_at", "2015-03-09 20:47:11.246649"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 43ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/articles/1" for ::1 at 2015-03-09 15:47:11 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/_comment.html.erb (0.7ms)
+  Rendered comments/_form.html.erb (1.3ms)
+  Rendered articles/show.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 53ms (Views: 51.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/articles-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/tags-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/screen-01fbf64475ac54fed4c01efd75d9ff54.css?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/application-522287195f88c13ae24f4d7b969752cf.css?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/articles-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/tags-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-09 15:47:11 -0500
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles"  ORDER BY "articles"."id" ASC LIMIT 1[0m
+
+
+Started GET "/articles/1" for ::1 at 2015-03-09 15:48:23 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/_comment.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (0.8ms)
+  Rendered articles/show.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 57ms (Views: 55.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/screen-01fbf64475ac54fed4c01efd75d9ff54.css?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/articles-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/application-522287195f88c13ae24f4d7b969752cf.css?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/tags-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/articles-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/tags-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-09 15:48:23 -0500
+
+
+Started GET "/articles/1/edit" for ::1 at 2015-03-09 15:49:51 -0500
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/_form.html.erb (2.8ms)
+  Rendered articles/edit.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 43ms (Views: 41.9ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/articles/1" for ::1 at 2015-03-09 15:49:58 -0500
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Fp0/Uh+5MszV80aReLEwpnrSQIQXRk5PdUWPhb0wWMxNXYAv+KqQUnWWfjZPEio37A9npKHrjxnsstrAuLVCwQ==", "article"=>{"title"=>"Sample Article Title", "tag_list"=>"tag1", "body"=>"This is the text for my article, woo hoo!", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fc2e8d9ee70 @tempfile=#<Tempfile:/var/folders/57/sd6n25cn3mn9m25dhtf9y38h0000gn/T/RackMultipart20150309-6742-1jbn75f.jpg>, @original_filename="baby_sloth_01.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"baby_sloth_01.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT 1[0m  [["name", "tag1"]]
+  [1m[35mTag Load (0.0ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+Command :: file -b --mime '/var/folders/57/sd6n25cn3mn9m25dhtf9y38h0000gn/T/3de5443b7f9517b31504dffee79e810520150309-6742-1vgn3ak.jpg'
+Command :: file -b --mime '/var/folders/57/sd6n25cn3mn9m25dhtf9y38h0000gn/T/3de5443b7f9517b31504dffee79e810520150309-6742-qvgwgn.jpg'
+  [1m[36mSQL (1.4ms)[0m  [1mUPDATE "articles" SET "image_file_name" = ?, "image_file_size" = ?, "image_updated_at" = ?, "updated_at" = ? WHERE "articles"."id" = ?[0m  [["image_file_name", "baby_sloth_01.jpg"], ["image_file_size", 4514], ["image_updated_at", "2015-03-09 20:49:58.681509"], ["updated_at", "2015-03-09 20:49:58.697546"], ["id", 1]]
+[paperclip] deleting /Users/johnspiva/Documents/the_odin_project/blogger/public/system/articles/images/000/000/001/original/Florida_Warm_Up_2015.jpg
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 42ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/articles/1" for ::1 at 2015-03-09 15:49:58 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/_comment.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (1.9ms)
+  Rendered articles/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 58ms (Views: 56.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/articles-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/screen-01fbf64475ac54fed4c01efd75d9ff54.css?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/tags-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/application-522287195f88c13ae24f4d7b969752cf.css?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/articles-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/tags-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-09 15:49:58 -0500
+
+
+Started GET "/articles/1" for ::1 at 2015-03-09 15:53:53 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/show.html.erb within layouts/application (5.8ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (undefined method `%' for true:TrueClass):
+     7: </p>
+     8: <p>
+     9:   <% if @article.image.exists? % %>
+    10:     <%= image_tag @article.image %>
+    11:   <% end %>
+    12: </p>
+    13: <p><%= @article.body %></p> <br />
+  app/views/articles/show.html.erb:10:in `_app_views_articles_show_html_erb___2293624045123291694_70237501958920'
+
+
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (43.0ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/_markup.html (0.6ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/style.css within layouts/inlined_string (0.2ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/_inner_console_markup.html within layouts/inlined_string (0.2ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/_prompt_box_markup.html within layouts/inlined_string (0.2ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/console.js within layouts/javascript (38.1ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/main.js within layouts/javascript (0.2ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/error_page.js within layouts/javascript (0.4ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/index.html (80.1ms)
+
+
+Started GET "/articles/1" for ::1 at 2015-03-09 15:54:10 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/show.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (undefined method `%' for true:TrueClass):
+     7: </p>
+     8: <p>
+     9:   <% if @article.image.exists? % %>
+    10:     <%= image_tag @article.image.url %>
+    11:   <% end %>
+    12: </p>
+    13: <p><%= @article.body %></p> <br />
+  app/views/articles/show.html.erb:10:in `_app_views_articles_show_html_erb___2293624045123291694_70237567894900'
+
+
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (42.4ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/_markup.html (0.3ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/style.css within layouts/inlined_string (0.2ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/_inner_console_markup.html within layouts/inlined_string (0.2ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/_prompt_box_markup.html within layouts/inlined_string (0.4ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/console.js within layouts/javascript (33.4ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/main.js within layouts/javascript (0.2ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/error_page.js within layouts/javascript (0.4ms)
+  Rendered /Users/johnspiva/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.1/lib/web_console/templates/index.html (79.2ms)
+
+
+Started GET "/articles/1" for ::1 at 2015-03-09 15:55:15 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/_comment.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (0.8ms)
+  Rendered articles/show.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 51ms (Views: 49.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/articles-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/screen-01fbf64475ac54fed4c01efd75d9ff54.css?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/tags-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/application-522287195f88c13ae24f4d7b969752cf.css?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/articles-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/tags-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-09 15:55:15 -0500
+
+
+Started GET "/articles/1/edit" for ::1 at 2015-03-09 15:55:19 -0500
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  Rendered articles/_form.html.erb (4.5ms)
+  Rendered articles/edit.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 50ms (Views: 49.5ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/articles/1" for ::1 at 2015-03-09 15:55:29 -0500
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OHuCLyN0gCYp3N4tx5RUPNXGShbcjxAFQz0HhMCTUbJjuz1SxGciuIm55orwN06tQxttNmoi0VPaylLBxRZLvw==", "article"=>{"title"=>"Sample Article Title", "tag_list"=>"tag1", "body"=>"This is the text for my article, woo hoo!"}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."name" = ? LIMIT 1[0m  [["name", "tag1"]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/articles/1" for ::1 at 2015-03-09 15:55:29 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArticle Load (0.1ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  Rendered articles/_comment.html.erb (0.6ms)
+  Rendered comments/_form.html.erb (0.9ms)
+  Rendered articles/show.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 47ms (Views: 46.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/articles-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/screen-01fbf64475ac54fed4c01efd75d9ff54.css?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/tags-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/application-522287195f88c13ae24f4d7b969752cf.css?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/articles-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/tags-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-09 15:55:29 -0500
+
+
+Started GET "/articles" for ::1 at 2015-03-09 15:55:35 -0500
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 42ms (Views: 41.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/articles/4" for ::1 at 2015-03-09 15:55:36 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?  [["article_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 4]]
+  Rendered articles/_comment.html.erb (0.0ms)
+  Rendered comments/_form.html.erb (0.9ms)
+  Rendered articles/show.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 48ms (Views: 46.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles" for ::1 at 2015-03-09 15:55:41 -0500
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 44ms (Views: 43.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/articles" for ::1 at 2015-03-09 15:58:26 -0500
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.1ms)[0m  [1mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 82ms (Views: 81.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/articles-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/comments-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/screen-01fbf64475ac54fed4c01efd75d9ff54.css?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/styles-20287375a1a29d675d1fe8a2b60e4aa0.css?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/tags-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/application-f9d6a931b5ee86d04f3d7390de91a3f7.css?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/tags-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/comments-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/articles-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/assets/application-8ce5067598cd03bc722b97db5dd776ec.js?body=1" for ::1 at 2015-03-09 15:58:26 -0500
+
+
+Started GET "/articles/1" for ::1 at 2015-03-09 15:58:30 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mArticle Load (0.1ms)[0m  SELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."article_id" = ?[0m  [["article_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."article_id" = ?  [["article_id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  Rendered articles/_comment.html.erb (0.5ms)
+  Rendered comments/_form.html.erb (1.0ms)
+  Rendered articles/show.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 54ms (Views: 53.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles" for ::1 at 2015-03-09 15:58:33 -0500
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.1ms)[0m  SELECT "articles".* FROM "articles"
+  Rendered articles/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 51ms (Views: 50.8ms | ActiveRecord: 0.1ms)
