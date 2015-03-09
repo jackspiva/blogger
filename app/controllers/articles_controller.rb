@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
 
     flash.notice = "Article '#{@article.title}' Destroyed!"
 
-    redirect_to action: :index
+    redirect_to articles_path
   end
   def edit
     @article = Article.find(params[:id])
